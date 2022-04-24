@@ -1,0 +1,7 @@
+{
+  "_class": "com.welcomehome.properties.data.entities.PersonaEntity",
+  "type": "Renter",
+  "id": 20000,
+  "email": "abdc@gmail.com",
+  "passwod": "abcd"
+}

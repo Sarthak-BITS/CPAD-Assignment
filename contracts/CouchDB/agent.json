@@ -1,0 +1,6 @@
+{
+  "_class": "com.welcomehome.properties.data.entities.PersonaEntity",
+  "type": "Agent",
+  "id": 20000,
+  "email": "abdc@gmail.com"
+}

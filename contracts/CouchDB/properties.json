@@ -1,0 +1,18 @@
+{
+  "_class": "com.welcomehome.properties.data.entities.PropertyEntity",
+  "propertyId": 0,
+  "propertyType": "Villa",
+  "propertyName": "Seaside Cottage",
+  "propertyAddress": {
+    "number": "221B",
+    "street": "Baker Street",
+    "city": "London",
+    "pincode": 500000
+  },
+  "amenities": [
+    "laundry",
+    "gym",
+    "garage"
+  ],
+  "ownerId":"1000"
+}
