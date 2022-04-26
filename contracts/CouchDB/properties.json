@@ -1,6 +1,6 @@
 {
   "_class": "com.welcomehome.properties.data.entities.PropertyEntity",
-  "propertyId": 0,
+  "propertyId": 1000,
   "propertyType": "Villa",
   "propertyName": "Seaside Cottage",
   "propertyAddress": {
@@ -14,5 +14,43 @@
     "gym",
     "garage"
   ],
-  "ownerId":"1000"
+  "ownerId": 20000
+}
+
+{
+  "_class": "com.welcomehome.properties.data.entities.PropertyEntity",
+  "amenities": [
+    "bath",
+    "kitchen",
+    "shower"
+  ],
+  "ownerId": 20000,
+  "propertyAddress": {
+    "city": "Imola",
+    "number": "221C",
+    "pincode": 10000,
+    "street": "Baker Road"
+  },
+  "propertyName": "Circuit",
+  "propertyType": "Home",
+  "propertyId": 2000
+}
+
+{
+  "_class": "com.welcomehome.properties.data.entities.PropertyEntity",
+  "amenities": [
+    "bath",
+    "kitchen",
+    "shower"
+  ],
+  "ownerId": 20000,
+  "propertyAddress": {
+    "city": "Imola",
+    "number": "221C",
+    "pincode": 10000,
+    "street": "Baker Road"
+  },
+  "propertyName": "Test",
+  "propertyType": "Home",
+  "propertyId": 3000
 }

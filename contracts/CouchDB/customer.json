@@ -1,7 +1,8 @@
 {
-  "_class": "com.welcomehome.properties.data.entities.PersonaEntity",
+  "_class": "com.welcomehome.personas.data.entities.PersonaEntity",
   "type": "Customer",
   "id": 10000,
-  "email": "abdc@gmail.com",
-  "password": "abcd"
+  "email": "Jack.Bauer@email.com",
+  "password": "abcd",
+  "name": "Jack Bauer"
 }

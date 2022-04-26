@@ -1,7 +1,8 @@
 {
-  "_class": "com.welcomehome.properties.data.entities.PersonaEntity",
+  "_class": "com.welcomehome.personas.data.entities.PersonaEntity",
   "type": "Renter",
   "id": 20000,
-  "email": "abdc@gmail.com",
-  "passwod": "abcd"
+  "email": "David.Palmer@email.com",
+  "passwod": "abcd",
+  "name": "David Palmer"
 }
