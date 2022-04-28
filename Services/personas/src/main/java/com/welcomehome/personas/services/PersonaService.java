@@ -2,6 +2,7 @@ package com.welcomehome.personas.services;
 
 import com.welcomehome.personas.data.entities.Login;
 import com.welcomehome.personas.data.entities.PersonaEntity;
+import com.welcomehome.personas.data.entities.UserRegistration;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,4 +15,6 @@ public interface PersonaService {
     Optional<PersonaEntity> getCustomersByEmail(String email);
 
     String validateLogin(Login login);
+
+    String registerUser(UserRegistration userRegistration);
 }

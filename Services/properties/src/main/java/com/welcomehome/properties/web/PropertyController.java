@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/properties")
 @Slf4j
 /**
  * Administrator/Crossplatform@123
@@ -25,7 +25,7 @@ public class PropertyController {
     @Autowired
     private PropertyService propertyService;
 
-    @GetMapping("/properties")
+    @GetMapping("/listings")
     public ResponseEntity<List<PropertyEntity>> getAllProperties(){
 
         ResponseEntity responseEntity = null;

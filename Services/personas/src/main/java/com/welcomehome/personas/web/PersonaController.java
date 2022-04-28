@@ -1,29 +1,27 @@
 package com.welcomehome.personas.web;
 
 import com.welcomehome.personas.data.entities.PersonaEntity;
+import com.welcomehome.personas.data.entities.UserRegistration;
 import com.welcomehome.personas.services.PersonaService;
 import com.welcomehome.personas.data.entities.Login;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/personas")
 @Slf4j
 public class PersonaController {
 
     @Autowired
     private PersonaService personaService;
 
-    @GetMapping("/personas")
+//    @GetMapping("/personas")
     public ResponseEntity<List<PersonaEntity>> getAllPersonas(){
 
         ResponseEntity responseEntity = null;
@@ -92,6 +90,25 @@ public class PersonaController {
         } catch (Exception e){
             log.error(e.getMessage());
             responseEntity = new ResponseEntity<>("Login failed. Web error.",HttpStatus.ACCEPTED);
+        }
+        return responseEntity;
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<String> registerUser(@RequestBody UserRegistration userRegistration){
+        ResponseEntity responseEntity = null;
+        String status = null;
+        try {
+            status = personaService.registerUser(userRegistration);
+            if(status.contains("fail")){
+                responseEntity = new ResponseEntity<>(status, HttpStatus.UNPROCESSABLE_ENTITY);
+            } else {
+                responseEntity = new ResponseEntity(status, HttpStatus.CREATED);
+            }
+
+        } catch (Exception e){
+            responseEntity = new ResponseEntity<>(status, HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error(e.getMessage());
         }
         return responseEntity;
     }

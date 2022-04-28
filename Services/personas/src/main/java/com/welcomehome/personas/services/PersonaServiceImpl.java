@@ -1,6 +1,7 @@
 package com.welcomehome.personas.services;
 
 import com.welcomehome.personas.data.entities.PersonaEntity;
+import com.welcomehome.personas.data.entities.UserRegistration;
 import com.welcomehome.personas.data.repositories.PersonaRepository;
 import com.welcomehome.personas.data.entities.Login;
 import lombok.extern.slf4j.Slf4j;
@@ -73,6 +74,26 @@ public class PersonaServiceImpl implements PersonaService {
         } catch(Exception e){
             log.error(e.getMessage());
             status = "login failed. Server error.";
+        }
+        return status;
+    }
+    @Override
+    public String registerUser(UserRegistration userRegistration){
+        String status = "Signup failed.";
+        PersonaEntity personaEntity = new PersonaEntity();
+        try {
+            personaEntity.setName(userRegistration.getName());
+            personaEntity.setEmail(userRegistration.getEmail());
+            personaEntity.setPassword(userRegistration.getPassword());
+            personaEntity.setType(userRegistration.getType());
+            personaEntity.setId(2000);
+            PersonaEntity personaEntity1 = personaRepository.save(personaEntity);
+            if (personaEntity1 != null){
+                status = "Signup successful";
+            }
+        } catch(Exception e){
+            log.error(e.getMessage());
+            status = "Signup failed.";
         }
         return status;
     }
