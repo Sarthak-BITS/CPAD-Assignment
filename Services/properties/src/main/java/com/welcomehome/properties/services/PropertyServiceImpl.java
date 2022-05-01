@@ -1,7 +1,8 @@
 package com.welcomehome.properties.services;
 
-import com.welcomehome.properties.data.entities.PropertyAddress;
+import com.welcomehome.properties.data.entities.PropertyDto;
 import com.welcomehome.properties.data.entities.PropertyEntity;
+import com.welcomehome.properties.data.repositories.PropertyCustomRepository;
 import com.welcomehome.properties.data.repositories.PropertyRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Autowired
     private PropertyRepository propertyRepository;
+
+    @Autowired
+    private PropertyCustomRepository propertyCustomRepository;
 
     @Override
     public List<PropertyEntity> getAllProperties(){
@@ -40,17 +44,30 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public PropertyEntity createProperty(){
+    public String createProperty(PropertyDto propertyDto){
+        Integer newPropertyId = 0;
+        String status = null;
+        try {
 
-        List<String> amenitiesList = new ArrayList<>();
-        amenitiesList.add("bath");
-        amenitiesList.add("kitchen");
-        amenitiesList.add("shower");
+            newPropertyId = propertyCustomRepository.getMaxPropertyId();
+            if (newPropertyId == null) {
+                newPropertyId = 8000;
+            } else {
+                newPropertyId++;
+            }
+            PropertyEntity propertyEntity = new PropertyEntity(newPropertyId,
+                    propertyDto.getPropertyType(),
+                    propertyDto.getPropertyName(),
+                    propertyDto.getOwnerId(),
+                    propertyDto.getAmenities(),
+                    propertyDto.getPropertyAddress());
+            propertyRepository.save(propertyEntity);
+            status = "Property advertised successfully";
+        } catch (Exception e){
+            log.error(e.getMessage());
+            status = "Property advertisement failed.";
 
-        PropertyAddress propertyAddress = new PropertyAddress("221C","Baker Road","Imola",10000);
-        PropertyEntity propertyEntity = new PropertyEntity(3000,"Home","Test",20000,
-                amenitiesList,propertyAddress);
-
-        return propertyRepository.save(propertyEntity);
+        }
+        return status;
    }
 }

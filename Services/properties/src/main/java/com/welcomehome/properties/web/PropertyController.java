@@ -1,14 +1,13 @@
 package com.welcomehome.properties.web;
 
+import com.welcomehome.properties.data.entities.PropertyDto;
 import com.welcomehome.properties.data.entities.PropertyEntity;
 import com.welcomehome.properties.services.PropertyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,20 +40,22 @@ public class PropertyController {
         return responseEntity;
     }
 
-    @GetMapping("/create")
-    public ResponseEntity<PropertyEntity> createProperty(){
+    @PostMapping("/create")
+    public ResponseEntity<PropertyEntity> createProperty(@RequestBody PropertyDto propertyDto){
 
         ResponseEntity responseEntity = null;
-        PropertyEntity propertyEntity = null;
+        String status = null;
         try {
-            propertyEntity = propertyService.createProperty();
-            responseEntity = new ResponseEntity(propertyEntity, HttpStatus.OK);
+            status = propertyService.createProperty(propertyDto);
+            if(status.toLowerCase().contains("fail")){
+                responseEntity = new ResponseEntity(status, HttpStatus.NOT_IMPLEMENTED);
+            } else {
+                responseEntity = new ResponseEntity(status, HttpStatus.CREATED);
+            }
         } catch(Exception e){
             log.error(e.getMessage());
-            propertyEntity = null;
-            responseEntity = new ResponseEntity(propertyEntity, HttpStatus.INTERNAL_SERVER_ERROR);
+            responseEntity = new ResponseEntity("Propert creation failed.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
     }
-
 }

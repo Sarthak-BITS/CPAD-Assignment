@@ -1,5 +1,6 @@
 package com.welcomehome.properties.services;
 
+import com.welcomehome.properties.data.entities.PropertyDto;
 import com.welcomehome.properties.data.entities.PropertyEntity;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface PropertyService {
 
     Optional<PropertyEntity> getPropertyById(Integer id);
 
-    PropertyEntity createProperty();
+    String createProperty(PropertyDto propertyDto);
 }

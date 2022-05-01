@@ -1,5 +1,6 @@
 package com.welcomehome.personas.web;
 
+import com.welcomehome.personas.data.entities.LoginResponse;
 import com.welcomehome.personas.data.entities.PersonaEntity;
 import com.welcomehome.personas.data.entities.UserRegistration;
 import com.welcomehome.personas.services.PersonaService;
@@ -83,13 +84,18 @@ public class PersonaController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<String> validateLogin(@RequestBody Login login){
+    public ResponseEntity<LoginResponse> validateLogin(@RequestBody Login login){
             ResponseEntity responseEntity = null;
         try {
-            responseEntity = new ResponseEntity<>(personaService.validateLogin(login),HttpStatus.ACCEPTED);
+            LoginResponse loginResponse = personaService.validateLogin(login);
+            if(loginResponse.getStatus().equals("success")){
+                responseEntity = new ResponseEntity<>(personaService.validateLogin(login),HttpStatus.ACCEPTED);
+            } else {
+                responseEntity = new ResponseEntity<>(personaService.validateLogin(login),HttpStatus.UNAUTHORIZED);
+            }
         } catch (Exception e){
             log.error(e.getMessage());
-            responseEntity = new ResponseEntity<>("Login failed. Web error.",HttpStatus.ACCEPTED);
+            responseEntity = new ResponseEntity<>("Login failed. Web error.",HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
     }
