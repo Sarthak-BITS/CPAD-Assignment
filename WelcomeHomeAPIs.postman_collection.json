@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "f193627b-3dc1-465b-8fa5-4adfd14cc991",
+		"name": "WelcomeHomeAPIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PropertyListing",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amenities\": [\r\n        \"bath\",\r\n        \"kitchen\",\r\n        \"gym\"\r\n    ],\r\n    \"ownerId\": 20000,\r\n    \"propertyAddress\": {\r\n        \"city\": \"Istanbul\",\r\n        \"number\": \"221D\",\r\n        \"pincode\": 10000,\r\n        \"street\": \"Mosque Road\"\r\n    },\r\n    \"propertyName\": \"Rosque Apts\",\r\n    \"propertyType\": \"Apartment\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-43-204-133-176.ap-south-1.compute.amazonaws.com/properties/listings",
+					"protocol": "http",
+					"host": [
+						"ec2-43-204-133-176",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"properties",
+						"listings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AgentListing",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-43-204-133-176.ap-south-1.compute.amazonaws.com/personas/agents",
+					"protocol": "http",
+					"host": [
+						"ec2-43-204-133-176",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"personas",
+						"agents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PropertyCreate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amenities\": [\r\n        \"bath\",\r\n        \"kitchen\",\r\n        \"gym\"\r\n    ],\r\n    \"ownerId\": 20000,\r\n    \"propertyAddress\": {\r\n        \"city\": \"Istanbul\",\r\n        \"number\": \"221D\",\r\n        \"pincode\": 10000,\r\n        \"street\": \"Mosque Road\"\r\n    },\r\n    \"propertyName\": \"Rosque Apts\",\r\n    \"propertyType\": \"Apartment\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-43-204-133-176.ap-south-1.compute.amazonaws.com/properties/create",
+					"protocol": "http",
+					"host": [
+						"ec2-43-204-133-176",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"properties",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CustomerLogin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"Bruce.Wayne@gmail.com\",\r\n    \"password\":\"bat123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-43-204-133-176.ap-south-1.compute.amazonaws.com/personas/login",
+					"protocol": "http",
+					"host": [
+						"ec2-43-204-133-176",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"personas",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer&AgentSignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Bruce Wayne\",\r\n    \"email\":\"bruce.wayne@gmail.com\",\r\n    \"password\":\"bat123\",\r\n    \"type\":\"Renter\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-43-204-133-176.ap-south-1.compute.amazonaws.com/personas/signup",
+					"protocol": "http",
+					"host": [
+						"ec2-43-204-133-176",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"personas",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBooking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"propertyId\": 2000,\r\n    \"customerId\": 10000,\r\n    \"agentId\": 10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-43-204-133-176.ap-south-1.compute.amazonaws.com/booking/create",
+					"protocol": "http",
+					"host": [
+						"ec2-43-204-133-176",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"booking",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

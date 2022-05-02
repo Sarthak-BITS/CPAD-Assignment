@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/personas")
 @Slf4j
+@CrossOrigin("*")
 public class PersonaController {
 
     @Autowired
@@ -83,7 +84,7 @@ public class PersonaController {
         return responseEntity;
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<LoginResponse> validateLogin(@RequestBody Login login){
             ResponseEntity responseEntity = null;
         try {

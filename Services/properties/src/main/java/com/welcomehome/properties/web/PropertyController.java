@@ -15,10 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/properties")
 @Slf4j
-/**
- * Administrator/Crossplatform@123
- * apiuser/apiusercpad@123
- */
+@CrossOrigin("*")
 public class PropertyController {
 
     @Autowired
