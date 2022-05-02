@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"amenities\": [\r\n        \"bath\",\r\n        \"kitchen\",\r\n        \"gym\"\r\n    ],\r\n    \"ownerId\": 20000,\r\n    \"propertyAddress\": {\r\n        \"city\": \"Istanbul\",\r\n        \"number\": \"221D\",\r\n        \"pincode\": 10000,\r\n        \"street\": \"Mosque Road\"\r\n    },\r\n    \"propertyName\": \"Rosque Apts\",\r\n    \"propertyType\": \"Apartment\"\r\n}",
+					"raw": "{\r\n    \"amenities\": [\r\n        \"bath\",\r\n        \"kitchen\",\r\n        \"gym\"\r\n    ],\r\n    \"ownerId\": 4001,\r\n    \"propertyAddress\": {\r\n        \"city\": \"Bangalore\",\r\n        \"number\": \"490C\",\r\n        \"pincode\": 560062,\r\n        \"street\": \"Kanakapura Road\"\r\n    },\r\n    \"propertyName\": \"Rosque Apts\",\r\n    \"propertyType\": \"Apartment\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -97,11 +97,8 @@
 		},
 		{
 			"name": "CustomerLogin",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
